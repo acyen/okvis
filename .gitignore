@@ -29,3 +29,8 @@
 
 # Docu
 documentation/html/
+
+# vscode
+.vscode/*
+# emacs
+*~
