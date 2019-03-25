@@ -308,9 +308,15 @@ int main(int argc, char **argv)
     okvis::Time t;
 
     for (size_t i = 0; i < numCameras; ++i) {
-      cv::Mat filtered = cv::imread(
-          path + "/cam" + std::to_string(i) + "/data/" + *cam_iterators.at(i),
-          cv::IMREAD_GRAYSCALE);
+	  std::string img_path =           path + "/cam" + std::to_string(i) + "/data/" + *cam_iterators.at(i);
+      cv::Mat filtered = cv::imread(img_path, cv::IMREAD_GRAYSCALE);
+      if (filtered.empty()) {
+        LOG(ERROR)<< "Invalid image: " <<  img_path;
+		if (numCameras > 1)
+		  return -1;
+		cam_iterators[i]++;		// continuing is possible if 1 camera
+        continue;
+	  }
       std::string nanoseconds = cam_iterators.at(i)->substr(
           cam_iterators.at(i)->size() - 13, 9);
       std::string seconds = cam_iterators.at(i)->substr(

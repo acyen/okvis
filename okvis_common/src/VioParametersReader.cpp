@@ -463,6 +463,10 @@ void VioParametersReader::readConfigFile(const std::string& filename) {
                                           (double) (imu_params["a0"][1]),
                                           (double) (imu_params["a0"][2]));
 
+  if (imu_params["g0"].isSeq())
+    vioParameters_.imu.g0 = Eigen::Vector3d((double) (imu_params["g0"][0]),
+                                            (double) (imu_params["g0"][1]),
+                                            (double) (imu_params["g0"][2]));
   readConfigFile_ = true;
 }
 

@@ -402,6 +402,7 @@ void ThreadedKFVio::frameConsumerLoop(size_t cameraIndex) {
         lastOptimized_T_WS_ = T_WS;
         lastOptimizedSpeedAndBiases_.setZero();
         lastOptimizedSpeedAndBiases_.segment<3>(6) = imu_params_.a0;
+        lastOptimizedSpeedAndBiases_.segment<3>(3) = imu_params_.g0;
         lastOptimizedStateTimestamp_ = multiFrame->timestamp();
       }
       OKVIS_ASSERT_TRUE_DBG(Exception, success,

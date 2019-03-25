@@ -125,6 +125,7 @@ bool Estimator::addStates(
       return false;
     speedAndBias.setZero();
     speedAndBias.segment<3>(6) = imuParametersVec_.at(0).a0;
+    speedAndBias.segment<3>(3) = imuParametersVec_.at(0).g0;
   } else {
     // get the previous states
     uint64_t T_WS_id = statesMap_.rbegin()->second.id;
@@ -481,8 +482,8 @@ bool Estimator::applyMarginalizationStrategy(
   }
 
   // marginalize everything but pose:
-  for(size_t k = 0; k<removeAllButPose.size(); ++k){
-    std::map<uint64_t, States>::iterator it = statesMap_.find(removeAllButPose[k]);
+  for(size_t kk = 0; kk<removeAllButPose.size(); ++kk){
+    std::map<uint64_t, States>::iterator it = statesMap_.find(removeAllButPose[kk]);
     for (size_t i = 0; i < it->second.global.size(); ++i) {
       if (i == GlobalStates::T_WS) {
         continue; // we do not remove the pose here.

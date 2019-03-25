@@ -108,14 +108,15 @@ struct ImuParameters{
   double a_max;  ///< Accelerometer saturation. [m/s^2]
   double g_max;  ///< Gyroscope saturation. [rad/s]
   double sigma_g_c;  ///< Gyroscope noise density.
-  double sigma_bg;  ///< Initial gyroscope bias.
+  double sigma_bg;  ///< Gyroscope bias noise density.
   double sigma_a_c;  ///< Accelerometer noise density.
-  double sigma_ba;  ///< Initial accelerometer bias
+  double sigma_ba;  ///< Accelerometer bias noise density.
   double sigma_gw_c; ///< Gyroscope drift noise density.
   double sigma_aw_c; ///< Accelerometer drift noise density.
   double tau;  ///< Reversion time constant of accerometer bias. [s]
   double g;  ///< Earth acceleration.
   Eigen::Vector3d a0;  ///< Mean of the prior accelerometer bias.
+  Eigen::Vector3d g0;  ///< Mean of the prior gyro bias.
   int rate;  ///< IMU rate in Hz.
 };
 
