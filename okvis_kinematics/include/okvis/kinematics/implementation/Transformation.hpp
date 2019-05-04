@@ -36,6 +36,10 @@
  * @author Stefan Leutenegger
  */
 
+#ifdef _MSC_VER
+#define __inline__ inline
+#endif
+
 /// \brief okvis Main namespace of this package.
 namespace okvis {
 

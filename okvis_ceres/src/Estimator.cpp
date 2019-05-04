@@ -847,7 +847,7 @@ void Estimator::optimize(size_t numIter, size_t numThreads,
 #else
 void Estimator::optimize(size_t numIter, size_t /*numThreads*/,
                                  bool verbose) // avoid warning since numThreads unused
-#warning openmp not detected, your system may be slower than expected
+#pragma message("openmp not detected, your system may be slower than expected")
 #endif
 
 {

@@ -45,8 +45,9 @@
 #include <pthread.h>
 #include <queue>
 #include <string>
+#ifndef _MSC_VER
 #include <sys/time.h>
-
+#endif
 #include <glog/logging.h>
 
 /// \brief okvis Main namespace of this package.

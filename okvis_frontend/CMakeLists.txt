@@ -31,7 +31,7 @@ add_library(${PROJECT_NAME}
 # and link it                 
 target_link_libraries(${PROJECT_NAME}
   PRIVATE ${BRISK_LIBRARIES} 
-  PRIVATE ${OpenGV_LIBRARIES} 
+  PRIVATE ${OPENGV_LIBRARIES} 
   PRIVATE ${CERES_LIBRARIES}
   PUBLIC okvis_util
   PUBLIC okvis_cv 
